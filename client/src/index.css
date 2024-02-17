@@ -8,9 +8,17 @@
 	padding: 0;
 }
 
+:root {
+	/* Color */
+	--background: #fff;
+	--primary: #b0ae58;
+	--secondary: #b7d3a2;
+	--accent: #88c17c;
+}
+
 body {
 	font-family: "Nunito", sans-serif;
 	font-size: 16px;
 	line-height: 1.6;
-	background-color: #f4f4f4;
+	background-color: #f5fcf6;
 }
