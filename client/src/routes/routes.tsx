@@ -17,6 +17,7 @@ const Layout = () => {
 
 const routes = createBrowserRouter([
 	{ path: "/", element: <Navigate to="/posts" /> },
+	{ path: "*", element: <Navigate to="/posts" /> },
 	{
 		element: <Layout />,
 		children: [
