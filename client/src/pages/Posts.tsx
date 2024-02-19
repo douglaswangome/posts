@@ -1,35 +1,45 @@
-import { FC } from "react";
-import { Post } from "../types";
-
+import { FC, useState } from "react";
+import { Post as PostProps } from "../types";
 // React Redux
 import { useSelector } from "react-redux";
+// Components
+import Post from "../components/Post";
 
 const Posts: FC = () => {
-	const posts: Post[] = useSelector(
-		(state: { posts: { posts: Post[] } }) => state.posts.posts
+	const posts: PostProps[] = useSelector(
+		(state: { posts: { posts: PostProps[] } }) => state.posts.posts
 	);
+
+	const [search, setSearch] = useState<string>("");
+	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearch(e.target.value);
+	};
 
 	return (
 		<div className="posts">
-			{posts.map((post: Post) => (
-				<div key={post.id}>
-					<span className="title">{post.title}</span>
-					<span>{post.body}</span>
-					<div className="tags">
-						{post.tags.map((tag: string, index: number) => (
-							<span key={index}>{tag}</span>
-						))}
-					</div>
-					<div className="footer">
-						<div>
-							<span>By {post.userId}</span>
-						</div>
-						<div>
-							<span>{post.reactions} reactions</span>
-						</div>
-					</div>
-				</div>
-			))}
+			<div className="search">
+				<input
+					value={search}
+					onChange={handleSearch}
+					type="text"
+					placeholder="Search"
+				/>
+			</div>
+			<div className="posts-list">
+				{posts
+					.filter((post: PostProps) => {
+						if (search === "") {
+							return post;
+						} else if (
+							post.title.toLowerCase().includes(search.toLowerCase())
+						) {
+							return post;
+						}
+					})
+					.map((post: PostProps) => (
+						<Post key={post.id} {...post} />
+					))}
+			</div>
 		</div>
 	);
 };

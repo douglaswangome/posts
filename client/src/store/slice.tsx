@@ -1,21 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Post } from "../types";
+import notify from "../notify";
 
-const userId: number = 0;
 const posts: Post[] = [];
 
 const slice = createSlice({
 	name: "posts",
-	initialState: { userId, posts },
+	initialState: { posts },
 	reducers: {
 		setPosts: (state, action: PayloadAction<Post[] | []>) => {
 			state.posts = action.payload;
 		},
-		setUser: (state, action: PayloadAction<number>) => {
-			state.userId = action.payload;
+		deletePost: (state, action: PayloadAction<number>) => {
+			notify("delete", "Post deleted!");
+			state.posts = state.posts.filter(
+				(post: Post) => post.id !== action.payload
+			);
+		},
+		addReaction: (state, action: PayloadAction<number>) => {
+			notify("reaction", "Reaction added!");
+			const postIndex: number = state.posts.findIndex(
+				(post: Post) => post.id === action.payload
+			);
+			state.posts[postIndex].reactions += 1;
 		},
 	},
 });
 
-export const { setPosts, setUser } = slice.actions;
+export const { setPosts, addReaction, deletePost } = slice.actions;
 export default slice.reducer;

@@ -1,0 +1,168 @@
+/* Pages */
+.posts {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}
+
+.posts .posts-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	padding: 12px;
+}
+
+.single-post {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 12px;
+	height: calc(100dvh - 80px);
+	width: 100%;
+}
+
+.single-post img {
+	width: 50%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.single-post .content {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	background-size: contain;
+}
+
+.single-post .content .title {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+}
+
+.single-post .content .title span:last-child {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.single-post span.title {
+	color: var(--accent);
+}
+
+.single-post .tags {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.single-post .tags span {
+	background-color: var(--accent);
+	border-radius: 12px;
+	padding: 4px 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 700;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.single-post .tags span:hover {
+	background-color: var(--primary);
+}
+
+.single-post .bottom {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.single-post .bottom .reactions {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Post Component */
+.post {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: 100%;
+	padding: 12px;
+	border-radius: 12px;
+	background-color: var(--secondary);
+	transition: scale 0.2s ease-in-out;
+}
+
+.post:hover {
+	cursor: default;
+	scale: 0.98;
+}
+
+.post .tags {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.post .tags span {
+	background-color: var(--accent);
+	border-radius: 12px;
+	padding: 4px 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 700;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.post .tags span:hover {
+	background-color: var(--primary);
+}
+
+.post .bottom {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: auto;
+}
+
+.post .bottom div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.post .bottom div span {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.post .bottom div svg {
+	font-size: 30px;
+	cursor: pointer;
+}
+
+/* Header Component */
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	height: 80px;
+}
+
+.header .logo {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+}
+
+.header .logo span:last-child {
+	font-size: 12px;
+}

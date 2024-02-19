@@ -1,20 +1,20 @@
 import "./App.css";
-import { FC, useEffect } from "react";
+import { FC, useEffect, Suspense } from "react";
 // React Redux
 import { useDispatch } from "react-redux";
-import { setPosts, setUser } from "./store/slice";
-// Pages - Move to routes/router file
-import Posts from "./pages/Posts";
+import { setPosts } from "./store/slice";
+// React Router
+import { RouterProvider } from "react-router-dom";
+import routes from "./routes/routes";
+// React Hot Toast
+import { Toaster } from "react-hot-toast";
 
 const App: FC = () => {
 	const api: string = "https://dummyjson.com/posts";
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const fetchDataAndAssignUserId = async () => {
-			const userId: number = Math.floor(Math.random() * 50) + 1;
-			dispatch(setUser(userId));
-
+		const fetchData = async () => {
 			try {
 				const response = await fetch(api);
 				const data = await response.json();
@@ -24,13 +24,14 @@ const App: FC = () => {
 			}
 		};
 
-		fetchDataAndAssignUserId();
+		fetchData();
 	}, []);
 
 	return (
-		<div>
-			<Posts />
-		</div>
+		<Suspense fallback={<div>Loading...</div>}>
+			<Toaster />
+			<RouterProvider router={routes} />
+		</Suspense>
 	);
 };
 

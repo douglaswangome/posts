@@ -10,15 +10,59 @@
 
 :root {
 	/* Color */
-	--background: #fff;
 	--primary: #b0ae58;
 	--secondary: #b7d3a2;
 	--accent: #88c17c;
+
+	/* Font Size */
+	--font-title: 36px;
 }
 
 body {
 	font-family: "Nunito", sans-serif;
 	font-size: 16px;
-	line-height: 1.6;
-	background-color: #f5fcf6;
+	line-height: 1.4;
+	background-color: #f0f0f0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+span.title {
+	font-weight: 700;
+	font-size: var(--font-title);
+}
+
+button {
+	border: 1px solid var(--accent);
+	border-radius: 12px;
+	color: var(--accent);
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: 700;
+	padding: 6px;
+	cursor: pointer;
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+button:hover {
+	box-shadow: 0 0 4px var(--accent);
+}
+
+input {
+	border: 1px solid var(--accent);
+	border-radius: 12px;
+	color: var(--accent);
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: 700;
+	padding: 6px;
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+input:focus {
+	outline: none;
+	box-shadow: 0 0 4px var(--accent);
 }
