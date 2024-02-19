@@ -166,3 +166,28 @@
 .header .logo span:last-child {
 	font-size: 12px;
 }
+
+@media screen and (max-width: 768px) {
+	.posts .posts-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.posts .posts-list {
+		grid-template-columns: 1fr;
+	}
+
+	.single-post {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.single-post img {
+		width: 100%;
+	}
+
+	.single-post .bottom {
+		margin-bottom: 20px;
+	}
+}
